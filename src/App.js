@@ -6,6 +6,10 @@ import NewList from "./newList";
 import ProcessingList from "./processingList";
 import FinishedList from "./finishedList"
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import DateList from "./dateList";
+
 
 export default function App() {
  
@@ -13,6 +17,11 @@ const[allprint,setAllPrint]=useState(false)
 const[newprint,setNewPrint]=useState(false)
 const[processingprint,setProcessingPrint]=useState(false)
 const[finishedprint,setFinishedPrint]=useState(false)
+
+
+const[selectedDate,setSelectedDate]=useState(null)
+
+
 function allbutton(){ 
  
     setAllPrint(true)
@@ -51,6 +60,27 @@ function finishedbutton(){
         (<FinishedList/>)
         :""
       } 
+
+
+
+<br/><br/>
+
+
+      <h4>date picker</h4>
+      
+           <DatePicker 
+           
+           selected={selectedDate} 
+           onChange={date=>setSelectedDate(date)} dateFormat='yyyy-MM-dd' 
+           
+           isClearable
+           showYearDropdown
+           scrollableMonthYearDropdown        
+           />
+           {
+             selectedDate===setSelectedDate?"true":""
+          
+           } 
   </div>
   );
 }
