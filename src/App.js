@@ -9,6 +9,7 @@ import FinishedList from "./finishedList"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import DateList from "./dateList";
+import PostData from "./data/posts.json";
 
 
 export default function App() {
@@ -78,9 +79,29 @@ function finishedbutton(){
            scrollableMonthYearDropdown        
            />
            {
-             selectedDate===setSelectedDate?"true":""
+               <div>
+                 {
+                 PostData.map(postDetail => {
+          
+                   <div>
+                     <p>{postDetail.orderStage===selectedDate?<div>
+                     <p>{postDetail.orderStage}</p>
+                     <p>{postDetail.orderName}</p>
+                     <p>{postDetail.orderId}</p>
+                     <p>{postDetail.orderDate}</p></div>
+  
+              :""
+
+              }</p>
+            </div>
+          
+                    }
+                    )
+                    }
+             </div>
           
            } 
+
   </div>
   );
 }
